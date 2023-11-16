@@ -8,34 +8,42 @@ var correspondanceConformeID = {};
 var correspondanceConformeTexte = {};
 
 function selection1(id_div, out) { // Conforme
-  new_id1 = id_div + "_";
-  elem1 = document.getElementById(id_div).innerText;
-  elem2_1 = document.getElementById(new_id1).innerText;
-  Add_html1 = '<div class="alert alert-success alert-dismissible fade show" role="alert"><h4 class="alert-heading">Conforme: ' + elem2_1 + '</h4><p>' + elem1 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+  var new_id1 = id_div + "_";
 
-  // Ajout de l'ID au tableau Conforme
-  Conforme.push(new_id1);
+  // Vérifier si l'ID new_id1 n'est pas déjà présent dans le tableau Conforme
+  if ((!Conforme.includes(new_id1)) && (!EnCours.includes(new_id1)) && (!NonConforme.includes(new_id1)) && (!NonApplicable.includes(new_id1)))
+  {
+      var elem1 = document.getElementById(id_div).innerText;
+      var elem2_1 = document.getElementById(new_id1).innerText;
+      var Add_html1 = '<div class="alert alert-success alert-dismissible fade show" role="alert"><h4 class="alert-heading">Conforme: ' + elem2_1 + '</h4><p>' + elem1 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="supprimerConforme(\'' + new_id1 + '\')"></button></div>';
 
-  // Ajout de la correspondance entre l'ID et le texte
-  correspondanceConformeID[new_id1] = elem2_1;
-  correspondanceConformeTexte[new_id1] = elem1;
+      // Ajout de l'ID au tableau Conforme
+      Conforme.push(new_id1);
 
-  // Ajout de l'élément au conteneur à l'ID 'content'
-  var contentContainer = document.getElementById(out);
-  if (contentContainer) {
-    contentContainer.innerHTML = contentContainer.innerHTML + Add_html1;
+      // Ajout de la correspondance entre l'ID et le texte
+      correspondanceConformeID[new_id1] = elem2_1;
+      correspondanceConformeTexte[new_id1] = elem1;
+
+      // Affichage du tableau Conforme dans la console
+      console.log("Tableau Conforme:", Conforme);
+
+      // Ajout de l'élément au conteneur à l'ID 'content'
+      var contentContainer = document.getElementById(out);
+      if (contentContainer) {
+          contentContainer.innerHTML = contentContainer.innerHTML + Add_html1;
+      }
   }
 }
 
-// Exemple d'accès à l'objet correspondanceConforme en dehors de la fonction
-function afficherCorrespondanceConforme() {
-  console.log("Correspondance entre ID et texte Conforme :", correspondanceConformeID, correspondanceConformeTexte);
+// Nouvelle fonction pour supprimer l'ID new_id1 du tableau Conforme
+function supprimerConforme(id) {
+  var index = Conforme.indexOf(id);
+  if (index !== -1) {
+      Conforme.splice(index, 1);
+  // Affichage du tableau Conforme dans la console
+  console.log("Tableau Conforme:", Conforme);
+  }
 }
-
-// Appel de la fonction pour afficher la correspondance
-afficherCorrespondanceConforme();
-
-// ...
 
 
 
@@ -49,32 +57,42 @@ var correspondanceEnCoursID = {};
 var correspondanceEnCoursTexte = {};
 
 function selection2(id_div, out) { // EnCours
-  new_id2 = id_div + "_";
-  elem2 = document.getElementById(id_div).innerText;
-  elem2_2 = document.getElementById(new_id2).innerText;
-  Add_html2 = '<div class="alert alert-warning alert-dismissible fade show" role="alert"><h4 class="alert-heading">EnCours: ' + elem2_2 + '</h4><p>' + elem2 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+  var new_id2 = id_div + "_"; // Modification de new_id1 à new_id2
 
-  // Ajout de l'ID au tableau EnCours
-  EnCours.push(new_id2);
+  // Vérifier si l'ID new_id2 n'est pas déjà présent dans le tableau EnCours
+  if ((!Conforme.includes(new_id2)) && (!EnCours.includes(new_id2)) && (!NonConforme.includes(new_id2)) && (!NonApplicable.includes(new_id2)))
+  {
+      var elem2 = document.getElementById(id_div).innerText; // Modification de elem1 à elem2
+      var elem2_2 = document.getElementById(new_id2).innerText; // Modification de elem2_1 à elem2_2
+      var Add_html2 = '<div class="alert alert-warning alert-dismissible fade show" role="alert"><h4 class="alert-heading">EnCours: ' + elem2_2 + '</h4><p>' + elem2 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="supprimerEnCours(\'' + new_id2 + '\')"></button></div>'; // Modification de Add_html1 à Add_html2
 
-  // Ajout de la correspondance entre l'ID et le texte pour EnCours
-  correspondanceEnCoursID[new_id2] = elem2_2;
-  correspondanceEnCoursTexte[new_id2] = elem2;
+      // Ajout de l'ID au tableau EnCours
+      EnCours.push(new_id2);
 
-  // Ajout de l'élément au conteneur à l'ID 'content'
-  var contentContainer = document.getElementById(out);
-  if (contentContainer) {
-    contentContainer.innerHTML = contentContainer.innerHTML + Add_html2;
+      // Ajout de la correspondance entre l'ID et le texte
+      correspondanceEnCoursID[new_id2] = elem2_2;
+      correspondanceEnCoursTexte[new_id2] = elem2;
+
+      // Affichage du tableau EnCours dans la console
+      console.log("Tableau EnCours:", EnCours);
+
+      // Ajout de l'élément au conteneur à l'ID 'content'
+      var contentContainer = document.getElementById(out);
+      if (contentContainer) {
+          contentContainer.innerHTML = contentContainer.innerHTML + Add_html2;
+      }
   }
 }
 
-// Exemple d'accès à l'objet correspondanceEnCours en dehors de la fonction
-function afficherCorrespondanceEnCours() {
-  console.log("Correspondance entre ID et texte EnCours :", correspondanceEnCoursID, correspondanceConformeTexte);
+// Nouvelle fonction pour supprimer l'ID new_id2 du tableau EnCours
+function supprimerEnCours(id) {
+  var index = EnCours.indexOf(id);
+  if (index !== -1) {
+      EnCours.splice(index, 1);
+      // Affichage du tableau EnCours dans la console
+      console.log("Tableau EnCours:", EnCours);
+  }
 }
-
-// Appel de la fonction pour afficher la correspondance
-afficherCorrespondanceEnCours();
 
 // ...
 
@@ -88,32 +106,42 @@ var correspondanceNonConformeID = {};
 var correspondanceNonConformeTexte = {};
 
 function selection3(id_div, out) { // NonConforme
-  new_id3 = id_div + "_";
-  elem3 = document.getElementById(id_div).innerText;
-  elem2_3 = document.getElementById(new_id3).innerText;
-  Add_html3 = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><h4 class="alert-heading">NonConforme: ' + elem2_3 + '</h4><p>' + elem3 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+  var new_id3 = id_div + "_"; // Modification de new_id1 à new_id3
 
-  // Ajout de l'ID au tableau NonConforme
-  NonConforme.push(new_id3);
+  // Vérifier si l'ID new_id3 n'est pas déjà présent dans le tableau NonConforme
+  if ((!Conforme.includes(new_id3)) && (!EnCours.includes(new_id3)) && (!NonConforme.includes(new_id3)) && (!NonApplicable.includes(new_id3)))
+  {
+      var elem3 = document.getElementById(id_div).innerText; // Modification de elem1 à elem3
+      var elem2_3 = document.getElementById(new_id3).innerText; // Modification de elem2_1 à elem2_3
+      var Add_html3 = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><h4 class="alert-heading">NonConforme: ' + elem2_3 + '</h4><p>' + elem3 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="supprimerNonConforme(\'' + new_id3 + '\')"></button></div>'; // Modification de Add_html1 à Add_html3
 
-  // Ajout de la correspondance entre l'ID et le texte pour NonConforme
-  correspondanceNonConformeID[new_id3] = elem2_3;
-  correspondanceNonConformeTexte[new_id3] = elem3;
+      // Ajout de l'ID au tableau NonConforme
+      NonConforme.push(new_id3);
 
-  // Ajout de l'élément au conteneur à l'ID 'content'
-  var contentContainer = document.getElementById(out);
-  if (contentContainer) {
-    contentContainer.innerHTML = contentContainer.innerHTML + Add_html3;
+      // Ajout de la correspondance entre l'ID et le texte
+      correspondanceNonConformeID[new_id3] = elem2_3;
+      correspondanceNonConformeTexte[new_id3] = elem3;
+
+      // Affichage du tableau NonConforme dans la console
+      console.log("Tableau NonConforme:", NonConforme);
+
+      // Ajout de l'élément au conteneur à l'ID 'content'
+      var contentContainer = document.getElementById(out);
+      if (contentContainer) {
+          contentContainer.innerHTML = contentContainer.innerHTML + Add_html3;
+      }
   }
 }
 
-// Exemple d'accès à l'objet correspondanceNonConforme en dehors de la fonction
-function afficherCorrespondanceNonConforme() {
-  console.log("Correspondance entre ID et texte NonConforme :", correspondanceNonConformeID, correspondanceNonConformeTexte);
+// Nouvelle fonction pour supprimer l'ID new_id3 du tableau NonConforme
+function supprimerNonConforme(id) {
+  var index = NonConforme.indexOf(id);
+  if (index !== -1) {
+      NonConforme.splice(index, 1);
+  // Affichage du tableau NonConforme dans la console
+  console.log("Tableau NonConforme:", NonConforme);
+  }
 }
-
-// Appel de la fonction pour afficher la correspondance
-afficherCorrespondanceNonConforme();
 
 // ...
 
@@ -127,32 +155,42 @@ var correspondanceNonApplicableID = {};
 var correspondanceNonApplicableTexte = {};
 
 function selection4(id_div, out) { // NonApplicable
-  new_id4 = id_div + "_";
-  elem4 = document.getElementById(id_div).innerText;
-  elem2_4 = document.getElementById(new_id4).innerText;
-  Add_html4 = '<div class="alert alert-secondary alert-dismissible fade show" role="alert"><h4 class="alert-heading">NonApplicable: ' + elem2_4 + '</h4><p>' + elem4 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+  var new_id4 = id_div + "_"; // Modification de new_id1 à new_id4
 
-  // Ajout de l'ID au tableau NonApplicable
-  NonApplicable.push(new_id4);
+  // Vérifier si l'ID new_id4 n'est pas déjà présent dans le tableau NonApplicable
+  if ((!Conforme.includes(new_id4)) && (!EnCours.includes(new_id4)) && (!NonConforme.includes(new_id4)) && (!NonApplicable.includes(new_id4)))
+  {
+      var elem4 = document.getElementById(id_div).innerText; // Modification de elem1 à elem4
+      var elem2_4 = document.getElementById(new_id4).innerText; // Modification de elem2_3 à elem2_4
+      var Add_html4 = '<div class="alert alert-secondary alert-dismissible fade show" role="alert"><h4 class="alert-heading">NonApplicable: ' + elem2_4 + '</h4><p>' + elem4 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="supprimerNonApplicable(\'' + new_id4 + '\')"></button></div>'; // Modification de Add_html1 à Add_html4
 
-  // Ajout de la correspondance entre l'ID et le texte pour NonApplicable
-  correspondanceNonApplicableID[new_id4] = elem2_4;
-  correspondanceNonApplicableTexte[new_id4] = elem4;
+      // Ajout de l'ID au tableau NonApplicable
+      NonApplicable.push(new_id4);
 
-  // Ajout de l'élément au conteneur à l'ID 'content'
-  var contentContainer = document.getElementById(out);
-  if (contentContainer) {
-    contentContainer.innerHTML = contentContainer.innerHTML + Add_html4;
+      // Ajout de la correspondance entre l'ID et le texte
+      correspondanceNonApplicableID[new_id4] = elem2_4;
+      correspondanceNonApplicableTexte[new_id4] = elem4;
+
+      // Affichage du tableau NonApplicable dans la console
+      console.log("Tableau NonApplicable:", NonApplicable);
+
+      // Ajout de l'élément au conteneur à l'ID 'content'
+      var contentContainer = document.getElementById(out);
+      if (contentContainer) {
+          contentContainer.innerHTML = contentContainer.innerHTML + Add_html4;
+      }
   }
 }
 
-// Exemple d'accès à l'objet correspondanceNonApplicable en dehors de la fonction
-function afficherCorrespondanceNonApplicable() {
-  console.log("Correspondance entre ID et texte NonApplicable :", correspondanceNonApplicableID, correspondanceNonApplicableTexte);
+// Nouvelle fonction pour supprimer l'ID new_id4 du tableau NonApplicable
+function supprimerNonApplicable(id) {
+  var index = NonApplicable.indexOf(id);
+  if (index !== -1) {
+      NonApplicable.splice(index, 1);
+  // Affichage du tableau NonApplicable dans la console
+  console.log("Tableau NonApplicable:", NonApplicable);
+  }
 }
-
-// Appel de la fonction pour afficher la correspondance
-afficherCorrespondanceNonApplicable();
 
 // ...
 

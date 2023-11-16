@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
 
   <title>Bonnes pratiques - Projet Front End </title>
   <meta content="" name="description">
@@ -63,7 +64,7 @@
 
         <li class="nav-item dropdown pe-3">
 
-          <button type="button" class="btn btn-success" onclick="creerPDF('content')"><i class="bi bi-cart me-1"></i>Télécharger Panier</button>
+          <button type="button" class="btn btn-success" onclick="creerPDF()"><i class="bi bi-cart me-1"></i>Télécharger Panier</button>
 
         </li><!-- End Messages Nav -->
 
@@ -142,6 +143,10 @@
 
   <main id="main" class="main">
 
+    <label for="siteUrl">URL du site à évaluer: </label>
+    <input type="text" id="siteUrl" placeholder="Enter the site URL" required>
+        
+
     <div class="pagetitle">
       <h1 id="famille_titre"></h1>
       <nav>
@@ -172,7 +177,7 @@
 
           <div class="card">
             <div class="card-body" id="content">
-              <h5 class="card-title">Liste des Recommandations</h5>
+              <h5 class="card-title">Panier des Recommandations</h5>
               
               
 
@@ -188,7 +193,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      <img src="https://design4green.org/wp-content/uploads/2023/11/Partenaires-Design-4-Green-2023.png" class="partenaires">
+      &copy; Copyright <strong><span>Bonne Pratique</span></strong>. All Rights Reserved
     </div>
     
   </footer><!-- End Footer -->

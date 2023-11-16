@@ -195,13 +195,13 @@ afficherCorrespondanceNonApplicable();
                     //var line = '<div class="alert alert-info alert-dismissible fade show" role="alert"><h4 class="alert-heading"><span id="el'+i+'_">'+json[i].Column2+'</span> <button type="button" onclick="selection('+id_div+','+out+')" class="bi bi-plus"></button></h4><p id="'+id_div2+'">'+json[i].Recommandation+'</p></div>';
                     var line = '<div class="alert-heading"><span id="el'+i+'_">'+json[i].Column2+'</span><p id="'+id_div2+'">'+json[i].Recommandation+'</p></div>';
                     lignes.push(line);
-                    var line1 = '<div><button type="button" onclick="selection1('+id_div+','+out+')" "></button></div>';
+                    var line1 = '<div><button type="button" onclick="selection1('+id_div+','+out+')" ">Conforme</button></div>';
                     lignes.push(line1);
-                    var line2 = '<div><button type="button" onclick="selection2('+id_div+','+out+')" "></button></div>';
+                    var line2 = '<div><button type="button" onclick="selection2('+id_div+','+out+')" ">En Cours</button></div>';
                     lignes.push(line2);
-                    var line3 = '<div><button type="button" onclick="selection3('+id_div+','+out+')" "></button></div>';
+                    var line3 = '<div><button type="button" onclick="selection3('+id_div+','+out+')" ">Non Conforme</button></div>';
                     lignes.push(line3);
-                    var line4 = '<div><button type="button" onclick="selection4('+id_div+','+out+')" "></button></div>';
+                    var line4 = '<div><button type="button" onclick="selection4('+id_div+','+out+')" ">Non Applicable</button></div>';
                     lignes.push(line4);
                 }
               }

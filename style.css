@@ -1,0 +1,16 @@
+.cadre_droit{
+    border:1px solid #000;
+    float: right;
+}
+
+.cadre_left{
+    border:1px solid #000;
+    float: left;
+}
+ .element{
+    display:block;
+ }
+
+ a{
+    text-decoration: none;
+ }

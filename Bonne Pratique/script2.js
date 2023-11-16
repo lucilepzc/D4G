@@ -50,7 +50,7 @@ function selection2(id_div, out) { // EnCours
   new_id2 = id_div + "_";
   elem2 = document.getElementById(id_div).innerText;
   elem2_2 = document.getElementById(new_id2).innerText;
-  Add_html2 = '<div class="alert alert-success alert-dismissible fade show" role="alert"><h4 class="alert-heading">EnCours: ' + elem2_2 + '</h4><p>' + elem2 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+  Add_html2 = '<div class="alert alert-warning alert-dismissible fade show" role="alert"><h4 class="alert-heading">EnCours: ' + elem2_2 + '</h4><p>' + elem2 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
   // Ajout de l'ID au tableau EnCours
   EnCours.push(new_id2);
@@ -89,7 +89,7 @@ function selection3(id_div, out) { // NonConforme
   new_id3 = id_div + "_";
   elem3 = document.getElementById(id_div).innerText;
   elem2_3 = document.getElementById(new_id3).innerText;
-  Add_html3 = '<div class="alert alert-success alert-dismissible fade show" role="alert"><h4 class="alert-heading">NonConforme: ' + elem2_3 + '</h4><p>' + elem3 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+  Add_html3 = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><h4 class="alert-heading">NonConforme: ' + elem2_3 + '</h4><p>' + elem3 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
   // Ajout de l'ID au tableau NonConforme
   NonConforme.push(new_id3);
@@ -128,7 +128,7 @@ function selection4(id_div, out) { // NonApplicable
   new_id4 = id_div + "_";
   elem4 = document.getElementById(id_div).innerText;
   elem2_4 = document.getElementById(new_id4).innerText;
-  Add_html4 = '<div class="alert alert-success alert-dismissible fade show" role="alert"><h4 class="alert-heading">NonApplicable: ' + elem2_4 + '</h4><p>' + elem4 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+  Add_html4 = '<div class="alert alert-secondary alert-dismissible fade show" role="alert"><h4 class="alert-heading">NonApplicable: ' + elem2_4 + '</h4><p>' + elem4 + '</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
   // Ajout de l'ID au tableau NonApplicable
   NonApplicable.push(new_id4);
@@ -169,7 +169,7 @@ afficherCorrespondanceNonApplicable();
         var xhr = new XMLHttpRequest();
       
         // Ouverture de la requête
-        xhr.open("GET", "https://raw.githubusercontent.com/edhansa/Front_End.github.io/main/data.json", true);
+        xhr.open("GET", "https://raw.githubusercontent.com/FlavioSanchezTroise/D4G-Infinite/main/list.json", true);
       
         // Envoi de la requête
         xhr.send();
@@ -195,14 +195,21 @@ afficherCorrespondanceNonApplicable();
                     //var line = '<div class="alert alert-info alert-dismissible fade show" role="alert"><h4 class="alert-heading"><span id="el'+i+'_">'+json[i].Column2+'</span> <button type="button" onclick="selection('+id_div+','+out+')" class="bi bi-plus"></button></h4><p id="'+id_div2+'">'+json[i].Recommandation+'</p></div>';
                     var line = '<div class="alert-heading"><span id="el'+i+'_">'+json[i].Column2+'</span><p id="'+id_div2+'">'+json[i].Recommandation+'</p></div>';
                     lignes.push(line);
-                    var line1 = '<div><button type="button" onclick="selection1('+id_div+','+out+')" ">Conforme</button></div>';
+                    var line1 = '<div class="btn-group">&nbsp<button type="button" class="btn btn-success" onclick="selection1('+id_div+','+out+')" ">Conforme</button>&nbsp</div>';
                     lignes.push(line1);
-                    var line2 = '<div><button type="button" onclick="selection2('+id_div+','+out+')" ">En Cours</button></div>';
+                    var line2 = '<div class="btn-group">&nbsp<button type="button" class="btn btn-warning" onclick="selection2('+id_div+','+out+')" ">En Cours</button>&nbsp</div>';
                     lignes.push(line2);
-                    var line3 = '<div><button type="button" onclick="selection3('+id_div+','+out+')" ">Non Conforme</button></div>';
+                    var line3 = '<div class="btn-group">&nbsp<button type="button" class="btn btn-danger" onclick="selection3('+id_div+','+out+')" ">Non Conforme</button>&nbsp</div>';
                     lignes.push(line3);
-                    var line4 = '<div><button type="button" onclick="selection4('+id_div+','+out+')" ">Non Applicable</button></div>';
+                    var line4 = '<div class="btn-group">&nbsp<button type="button" class="btn btn-secondary" onclick="selection4('+id_div+','+out+')" ">Non Applicable</button>&nbsp</div>';
                     lignes.push(line4);
+                    lignes.push('<br>' + '<br>');
+
+                    var texteAvecSautDeLigne = "Première ligne.<br>Deuxième ligne.";
+                    var element = document.createElement("p");
+                    element.innerHTML = texteAvecSautDeLigne; // Utiliser innerHTML pour interpréter les balises HTML
+                    document.body.appendChild(element);
+
                 }
               }
             }

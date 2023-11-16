@@ -1,3 +1,5 @@
+
+
 // Déclaration du tableau Conforme
 var Conforme = [];
 
@@ -152,6 +154,14 @@ function afficherCorrespondanceNonApplicable() {
 // Appel de la fonction pour afficher la correspondance
 afficherCorrespondanceNonApplicable();
 
+// ...
+
+
+
+
+
+
+
     function afficherLignes(option) { 
         // Récupération de l'élément div
         var el = document.getElementById("maDiv");
@@ -205,7 +215,7 @@ afficherCorrespondanceNonApplicable();
                 }
               }
             }
-            
+      
             el.innerHTML = lignes.join("");
           } else {
             // Si la réponse est un échec, on affiche un message d'erreur
@@ -222,6 +232,7 @@ afficherCorrespondanceNonApplicable();
 
         // Création d'un nouvel objet jsPDF
         var pdf = new jsPDF();
+        var yPos = 10;
       
         // Fonction pour ajouter du texte avec retour à la ligne
         function addWrappedText(x, y, text, maxWidth) {
@@ -238,14 +249,13 @@ afficherCorrespondanceNonApplicable();
           }
           return currentY;
         }
-
+      
         // Ajouter l'URL au contenu du PDF
         yPos = addNewPageIfNecessary(yPos);
         addWrappedText(20, yPos, "URL du site évalué: " + url, 150);
         yPos += 20;
       
         // Ajout des valeurs de correspondanceConformeTexte
-        var yPos = 10;
         yPos = addNewPageIfNecessary(yPos);
         pdf.text(20, yPos, "Mesures Conformes :");
         yPos += 20;
@@ -295,10 +305,12 @@ afficherCorrespondanceNonApplicable();
           addWrappedText(20, yPos + 10, "Mesure : " + correspondanceNonApplicableTexte[id], 150);
           yPos += 30; // Ajustez l'espacement selon vos besoins
         }
-      
+        
         // Enregistrement du document PDF
         pdf.save("bilan_ecoconception_site.pdf");
       }
+      
+      
       
       
       

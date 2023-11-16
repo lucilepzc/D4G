@@ -1,3 +1,5 @@
+
+
 // Déclaration du tableau Conforme
 var Conforme = [];
 
@@ -224,8 +226,13 @@ afficherCorrespondanceNonApplicable();
       
 
       function creerPDF() {
+
+        // récupération de l'URL
+        var url = document.getElementById('siteUrl').value;
+
         // Création d'un nouvel objet jsPDF
         var pdf = new jsPDF();
+        var yPos = 10;
       
         // Fonction pour ajouter du texte avec retour à la ligne
         function addWrappedText(x, y, text, maxWidth) {
@@ -243,8 +250,12 @@ afficherCorrespondanceNonApplicable();
           return currentY;
         }
       
+        // Ajouter l'URL au contenu du PDF
+        yPos = addNewPageIfNecessary(yPos);
+        addWrappedText(20, yPos, "URL du site évalué: " + url, 150);
+        yPos += 20;
+      
         // Ajout des valeurs de correspondanceConformeTexte
-        var yPos = 10;
         yPos = addNewPageIfNecessary(yPos);
         pdf.text(20, yPos, "Mesures Conformes :");
         yPos += 20;
@@ -294,10 +305,18 @@ afficherCorrespondanceNonApplicable();
           addWrappedText(20, yPos + 10, "Mesure : " + correspondanceNonApplicableTexte[id], 150);
           yPos += 30; // Ajustez l'espacement selon vos besoins
         }
+
+        function genererRapport() {
+          var siteURL = document.getElementById("siteURL").value;
+          creerPDF(siteURL);
+        }
+        
       
         // Enregistrement du document PDF
         pdf.save("bilan_ecoconception_site.pdf");
       }
+      
+      
       
       
       

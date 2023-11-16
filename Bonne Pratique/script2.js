@@ -343,6 +343,18 @@ function supprimerNonApplicable(id) {
           addWrappedText(20, yPos + 10, "Mesure : " + correspondanceNonApplicableTexte[id], 150);
           yPos += 30; // Ajustez l'espacement selon vos besoins
         }
+
+        // Création de l'objet JSON et enregistrement côté client
+        var monObjetJSON = {
+          "url": url,
+          "Conforme": Conforme,
+          "EnCours": EnCours,
+          "NonConforme": NonConforme,
+          "NonApplicable": NonApplicable
+        };
+  
+        // Affichage du JSON côté client
+        console.log(JSON.stringify(monObjetJSON));
         
         // Enregistrement du document PDF
         pdf.save("bilan_ecoconception_site.pdf");

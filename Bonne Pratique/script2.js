@@ -152,14 +152,6 @@ function afficherCorrespondanceNonApplicable() {
 // Appel de la fonction pour afficher la correspondance
 afficherCorrespondanceNonApplicable();
 
-// ...
-
-
-
-
-
-
-
     function afficherLignes(option) { 
         // Récupération de l'élément div
         var el = document.getElementById("maDiv");
@@ -224,6 +216,10 @@ afficherCorrespondanceNonApplicable();
       
 
       function creerPDF() {
+
+        // récupération de l'URL
+        var url = document.getElementById('siteUrl').value;
+
         // Création d'un nouvel objet jsPDF
         var pdf = new jsPDF();
       
@@ -242,6 +238,11 @@ afficherCorrespondanceNonApplicable();
           }
           return currentY;
         }
+
+        // Ajouter l'URL au contenu du PDF
+        yPos = addNewPageIfNecessary(yPos);
+        addWrappedText(20, yPos, "URL du site évalué: " + url, 150);
+        yPos += 20;
       
         // Ajout des valeurs de correspondanceConformeTexte
         var yPos = 10;
